@@ -1,4 +1,4 @@
-f = open('fetched_tweets_op.json')
+f = open('fetched_tweets_1.json')
 ff = open('STEP1_OP.json','a')
 while True:
 	a = f.readline()

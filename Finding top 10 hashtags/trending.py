@@ -29,6 +29,12 @@ def main():
 	for i in op:	
 		f.write(str(i)+'\n')
 	f.close()
+	
+	op1 = o[10:]
+	f1 = open('AFTER_TOP_10_TWEETS.txt','a')
+	for i in op1:	
+		f1.write(str(i)+'\n')
+	f1.close()
 
 if __name__=='__main__':
 	main()

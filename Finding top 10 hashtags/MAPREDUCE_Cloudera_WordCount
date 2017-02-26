@@ -1,0 +1,9 @@
+[cloudera@quickstart Downloads]$ hadoop fs -copyFromLocal MAP_REDUCE_INPUT_1.txt 
+
+[cloudera@quickstart Downloads]$ hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount MAP_REDUCE_INPUT_1.txt /user/cloudera/output
+
+[cloudera@quickstart Downloads]$ hdfs dfs -cat /user/cloudera/output/part-r-00000
+
+[cloudera@quickstart Downloads]$ hdfs dfs -copyToLocal /user/cloudera/output/part-r-00000
+
+[cloudera@quickstart Downloads]$ mv part-r-00000 MAP_REDUCE_OUTPUT

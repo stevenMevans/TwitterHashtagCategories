@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.jetbrains.annotations.Nullable;
 import twitter4j.*;
 
 public class TopHashTags
@@ -43,7 +44,9 @@ public class TopHashTags
         job.waitForCompletion(true);
 
         System.out.println(mostUsed.toString());
-        HDFSDirectories.categorize(mostUsed);
+
+        DirectoryCreator.create(mostUsed);
+        TweetCategorizer.categorize(mostUsed);
     }
 
     public static class Map extends Mapper<LongWritable, Text, Text, IntWritable>
@@ -104,6 +107,7 @@ public class TopHashTags
         }
     }
 
+    @Nullable
     public static java.util.Map.Entry getSmallestEntry()
     {
         if (mostUsed.isEmpty())
@@ -124,5 +128,10 @@ public class TopHashTags
         }
 
         return smallestEntry;
+    }
+
+    public static boolean isTopHashTag(String hashtag)
+    {
+        return mostUsed.containsKey(hashtag);
     }
 }

@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class TweetSampleCollector
+public class TweetCollector
 {
     private final static int FILE_QUANTITY = 15;
     private final static String FILE_NAMES = "src/data/tweets.json";
@@ -34,19 +34,15 @@ public class TweetSampleCollector
                 {
                     PrintWriter out = new PrintWriter(bw);
                     out.println(TwitterObjectFactory.getRawJSON(status));
-                    tweetCount++;
-                    if (tweetCount % 100 == 0)
+                    if (++tweetCount % 100 == 0)
                         System.out.println(tweetCount);
                 }
                 else
                 {
-                    try {
-                        bw.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    try { bw.flush(); }
+                    catch (IOException e) { e.printStackTrace(); }
                     System.out.println(tweetCount + " tweets saved. ");
-                    TweetSampleCollector.stop();
+                    TweetCollector.stop();
                 }
             }
 

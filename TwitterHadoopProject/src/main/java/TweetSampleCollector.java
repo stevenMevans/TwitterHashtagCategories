@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 public class TweetSampleCollector
 {
-    private final static int FILE_QUANTITY = 150000;
+    private final static int FILE_QUANTITY = 15;
     private final static String FILE_NAMES = "src/data/tweets.json";
 
     private static TwitterStream twitterStream;
@@ -40,6 +40,11 @@ public class TweetSampleCollector
                 }
                 else
                 {
+                    try {
+                        bw.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(tweetCount + " tweets saved. ");
                     TweetSampleCollector.stop();
                 }

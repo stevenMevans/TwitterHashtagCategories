@@ -10,7 +10,7 @@ consumer_secret = "5IHR3H4EJQCL5dPx5Z9w6vcAVPwiQO9oKXajwF0SpSSs4aNQ2J"
 class StdOutListener(StreamListener):
 
     def on_data(self, data):
-        with open('fetched_tweets_1.json','a') as tf:
+        with open('fetched_tweets_output.json','a') as tf:
             tf.write(data)
             print(data)
             return True
@@ -20,5 +20,3 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, StdOutListener())
     stream.filter(track=['trump','cnn','oscar', 'superbowl', 'tech', 'russia', 'climatechange', 'food', 'shopping', 'iphone', 'mac', 'billgates', 'TeamKC', 'WhatILookForInAFriend', 'ban', 'cup', 'programming'])
-
-        

@@ -19,6 +19,6 @@ if __name__ == '__main__':
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, StdOutListener())
-    stream.filter(track=['tech','shopping','texas','movie','NZ','Cricket','NBA','Baseball','Yankees'])
+    stream.filter(track=['trump','cnn','oscar', 'superbowl', 'tech', 'russia', 'climatechange', 'food', 'shopping', 'iphone', 'mac', 'billgates', 'TeamKC', 'WhatILookForInAFriend', 'ban', 'cup', 'programming'])
 
         

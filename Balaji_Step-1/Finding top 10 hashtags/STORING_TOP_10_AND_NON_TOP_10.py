@@ -6,7 +6,6 @@ def main():
 		l = inp.split()
 		if len(l) == 2:
 			hashtable[l[0]] = int(l[1])
-
 		if len(inp)<=1:
 			break
 	d = hashtable
@@ -16,13 +15,13 @@ def main():
 		o.append((k, v))
 	
 	op = o[0:10]
-	f = open('TOP_10_TWEETS1.txt','w')
+	f = open('TOP_10_HASGTAGS.txt','w')
 	for i in op:	
 		f.write(str(i)+'\n')
 	f.close()
 	
 	op1 = o[10:]
-	f1 = open('AFTER_TOP_10_TWEETS.txt','w')
+	f1 = open('NON_TOP_10_HASHTAGS.txt','w')
 	for i in op1:	
 		f1.write(str(i)+'\n')
 	f1.close()

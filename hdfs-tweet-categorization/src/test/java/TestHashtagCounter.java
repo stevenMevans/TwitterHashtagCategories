@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestTopHashTags
+public class TestHashtagCounter
 {
     private final int ARRAY_SIZE = 15;
 
@@ -34,8 +34,8 @@ public class TestTopHashTags
     @Test
     public void testGetSmallestEntry()
     {
-        TopHashTags.mostUsed.putAll(testMap);
-        java.util.Map.Entry smallestEntry = TopHashTags.getSmallestEntry();
+        HashtagCounter.mostUsed.putAll(testMap);
+        java.util.Map.Entry smallestEntry = HashtagCounter.getSmallestEntry();
         IntWritable smallestValue = (IntWritable) smallestEntry.getValue();
         assertEquals(smallestValue.get(), 3);
         System.out.println(smallestEntry.getKey());
@@ -46,7 +46,7 @@ public class TestTopHashTags
     {
         for (int i = 0; i < ARRAY_SIZE; i++)
         {
-            TopHashTags.addToTopTen(hashtagKeys[i], hashtagValues[i]);
+            HashtagCounter.addToMostUsed(hashtagKeys[i], hashtagValues[i]);
         }
         System.out.println("----- EXPECTED SET ----");
         for (String key : testMap.keySet())
@@ -55,10 +55,10 @@ public class TestTopHashTags
         }
         System.out.println();
         System.out.println("----- ACTUAL SET ----");
-        for (String key : TopHashTags.mostUsed.keySet())
+        for (String key : HashtagCounter.mostUsed.keySet())
         {
             System.out.println(key);
         }
-        assertEquals(testMap.keySet(), TopHashTags.mostUsed.keySet());
+        assertEquals(testMap.keySet(), HashtagCounter.mostUsed.keySet());
     }
 }
